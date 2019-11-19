@@ -213,7 +213,7 @@ axios('/user/12345');
 解决并发请求的帮助函数
 
 ##### axios.all(iterable)
-
+##### axios.allSettled(iterable)
 ##### axios.spread(callback)
 
 ### Creating an instance
