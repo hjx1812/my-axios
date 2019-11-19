@@ -1,72 +1,72 @@
 # axios
 
 [![npm version](https://img.shields.io/npm/v/axios.svg?style=flat-square)](https://www.npmjs.org/package/axios)
-[![build status](https://img.shields.io/travis/axios/axios/master.svg?style=flat-square)](https://travis-ci.org/axios/axios)
+[![build status](https://img.shields.io/travis/axios/axios.svg?style=flat-square)](https://travis-ci.org/axios/axios)
 [![code coverage](https://img.shields.io/coveralls/mzabriskie/axios.svg?style=flat-square)](https://coveralls.io/r/mzabriskie/axios)
 [![install size](https://packagephobia.now.sh/badge?p=axios)](https://packagephobia.now.sh/result?p=axios)
 [![npm downloads](https://img.shields.io/npm/dm/axios.svg?style=flat-square)](http://npm-stat.com/charts.html?package=axios)
 [![gitter chat](https://img.shields.io/gitter/room/mzabriskie/axios.svg?style=flat-square)](https://gitter.im/mzabriskie/axios)
 [![code helpers](https://www.codetriage.com/axios/axios/badges/users.svg)](https://www.codetriage.com/axios/axios)
 
-Promise based HTTP client for the browser and node.js
+基于Promise的浏览器和node.js HTTP客户端
+## 特点
 
-## Features
+- 发送[XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 请求
+- 在node.js中发送[http](http://nodejs.org/api/http.html) 请求
+- 支持[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
+- 拦截request和response
+- 转换request和response数据
+- 取消请求
+- JSON数据的自动转换
+- 在客户端防止[XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
-- Make [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) from the browser
-- Make [http](http://nodejs.org/api/http.html) requests from node.js
-- Supports the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
-- Intercept request and response
-- Transform request and response data
-- Cancel requests
-- Automatic transforms for JSON data
-- Client side support for protecting against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+## 浏览器支持
 
-## Browser Support
-
-![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png) |
---- | --- | --- | --- | --- | --- |
-Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | 11 ✔ |
+| ![Chrome](axios.assets/chrome_48x48.png) | ![Firefox](axios.assets/firefox_48x48.png) | ![Safari](axios.assets/safari_48x48.png) | ![Opera](axios.assets/opera_48x48.png) | ![Edge](axios.assets/edge_48x48.png) | ![IE](axios.assets/internet-explorer_9-11_48x48.png) |      |
+| ---------------------------------------- | ------------------------------------------ | ---------------------------------------- | -------------------------------------- | ------------------------------------ | ---------------------------------------------------- | ---- |
+| Latest ✔                                 | Latest ✔                                   | Latest ✔                                 | Latest ✔                               | Latest ✔                             | 11 ✔                                                 |      |
 
 [![Browser Matrix](https://saucelabs.com/open_sauce/build_matrix/axios.svg)](https://saucelabs.com/u/axios)
 
-## Installing
+## 安装
 
-Using npm:
+使用 npm:
 
 ```bash
 $ npm install axios
 ```
 
-Using bower:
+使用 bower:
 
 ```bash
 $ bower install axios
 ```
 
-Using yarn:
+使用 yarn:
 
 ```bash
 $ yarn add axios
 ```
 
-Using cdn:
+使用 cdn:
 
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ```
 
-## Example
+## 例子
 
-### note: CommonJS usage
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+### 注意: CommonJS 的使用
+
+为了能够获得TypeScript编码的智能感知和自动补全，使用CommonJS imports的时候，用以下的方式使用`require()` 
 
 ```js
 const axios = require('axios').default;
 
-// axios.<method> will now provide autocomplete and parameter typings
+// axios.<method> 现在可以提供自动补全和参数输入
 ```
 
-Performing a `GET` request
+执行一个 `GET` 请求
 
 ```js
 const axios = require('axios');
@@ -115,7 +115,7 @@ async function getUser() {
 > **NOTE:** `async/await` is part of ECMAScript 2017 and is not supported in Internet
 > Explorer and older browsers, so use with caution.
 
-Performing a `POST` request
+执行一个 `POST` 请求
 
 ```js
 axios.post('/user', {
@@ -130,7 +130,7 @@ axios.post('/user', {
   });
 ```
 
-Performing multiple concurrent requests
+执行多个并发请求
 
 ```js
 function getUserAccount() {
@@ -149,7 +149,7 @@ axios.all([getUserAccount(), getUserPermissions()])
 
 ## axios API
 
-Requests can be made by passing the relevant config to `axios`.
+同样的道理，你可以通过传递相关的配置来发送请求`axios`.
 
 ##### axios(config)
 
@@ -184,32 +184,41 @@ axios({
 axios('/user/12345');
 ```
 
-### Request method aliases
+### Request 方法的别称
 
-For convenience aliases have been provided for all supported request methods.
+所有支持的方法都有通俗易懂的别称
 
 ##### axios.request(config)
+
 ##### axios.get(url[, config])
+
 ##### axios.delete(url[, config])
+
 ##### axios.head(url[, config])
+
 ##### axios.options(url[, config])
+
 ##### axios.post(url[, data[, config]])
+
 ##### axios.put(url[, data[, config]])
+
 ##### axios.patch(url[, data[, config]])
 
-###### NOTE
-When using the alias methods `url`, `method`, and `data` properties don't need to be specified in config.
+###### 注意
 
-### Concurrency
+当你使用方法别称的时候， `url`, `method`, 和 `data` 等属性都不需要在配置中指定。
 
-Helper functions for dealing with concurrent requests.
+### 并发
+
+解决并发请求的帮助函数
 
 ##### axios.all(iterable)
+
 ##### axios.spread(callback)
 
 ### Creating an instance
 
-You can create a new instance of axios with a custom config.
+你可以使用新的axios的实例创建一个自定义的配置
 
 ##### axios.create([config])
 
@@ -221,23 +230,31 @@ const instance = axios.create({
 });
 ```
 
-### Instance methods
+### 实例的方法
 
-The available instance methods are listed below. The specified config will be merged with the instance config.
+下面是可以应用到的实例方法。这些指定的配置都可以被合并到实例的配置中。
 
 ##### axios#request(config)
+
 ##### axios#get(url[, config])
+
 ##### axios#delete(url[, config])
+
 ##### axios#head(url[, config])
+
 ##### axios#options(url[, config])
+
 ##### axios#post(url[, data[, config]])
+
 ##### axios#put(url[, data[, config]])
+
 ##### axios#patch(url[, data[, config]])
+
 ##### axios#getUri([config])
 
-## Request Config
+## 请求配置
 
-These are the available config options for making requests. Only the `url` is required. Requests will default to `GET` if `method` is not specified.
+这些是用于发送请求的可用配置项。只有 `url`是必须的。如果 `method`没有被指定的话，Requests默认是`GET`.
 
 ```js
 {
@@ -403,9 +420,9 @@ These are the available config options for making requests. Only the `url` is re
 }
 ```
 
-## Response Schema
+## 响应的 配置
 
-The response for a request contains the following information.
+一个请求的响应包含了以下的信息。
 
 ```js
 {
@@ -432,7 +449,7 @@ The response for a request contains the following information.
 }
 ```
 
-When using `then`, you will receive the response as follows:
+当使用`then`的时候，你会收到以下的响应:
 
 ```js
 axios.get('/user/12345')
@@ -445,13 +462,14 @@ axios.get('/user/12345')
   });
 ```
 
-When using `catch`, or passing a [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) as second parameter of `then`, the response will be available through the `error` object as explained in the [Handling Errors](#handling-errors) section.
 
-## Config Defaults
+当使用`catch`或者传递一个[rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)作为`then`的第二个参数，将可以在响应中使用`error`对象，这一部分在[Handling Errors](#handling-errors)中有说到。
 
-You can specify config defaults that will be applied to every request.
+## 默认配置
 
-### Global axios defaults
+你指定的默认配置将会被应用到每个请求中
+
+### 全局的axios配置
 
 ```js
 axios.defaults.baseURL = 'https://api.example.com';
@@ -459,7 +477,7 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
-### Custom instance defaults
+### 自定义的默认实例
 
 ```js
 // Set config defaults when creating the instance
@@ -471,9 +489,10 @@ const instance = axios.create({
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 ```
 
-### Config order of precedence
+### 配置的优先顺序
 
-Config will be merged with an order of precedence. The order is library defaults found in [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28), then `defaults` property of the instance, and finally `config` argument for the request. The latter will take precedence over the former. Here's an example.
+
+配置将会以以下的优先顺序被合并。默认配置在[lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults.js#L28)里面可以找到。然后是实例的 `defaults`属性，之后就是请求的`config`参数。后者将会比前者优先权更高。下面是一个例子。
 
 ```js
 // Create an instance using the config defaults provided by the library
@@ -492,7 +511,7 @@ instance.get('/longRequest', {
 
 ## Interceptors
 
-You can intercept requests or responses before they are handled by `then` or `catch`.
+你可以在请求或者响应被拦截前使用 `then` 或者`catch`
 
 ```js
 // Add a request interceptor
@@ -516,21 +535,21 @@ axios.interceptors.response.use(function (response) {
   });
 ```
 
-If you need to remove an interceptor later you can.
+如果你想移除一个拦截器你可以
 
 ```js
 const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
 axios.interceptors.request.eject(myInterceptor);
 ```
 
-You can add interceptors to a custom instance of axios.
+你可以添加一个拦截器到一个自定义的axios实例中。
 
 ```js
 const instance = axios.create();
 instance.interceptors.request.use(function () {/*...*/});
 ```
 
-## Handling Errors
+## 处理 Errors
 
 ```js
 axios.get('/user/12345')
@@ -554,7 +573,7 @@ axios.get('/user/12345')
   });
 ```
 
-Using the `validateStatus` config option, you can define HTTP code(s) that should throw an error.
+使用`validateStatus`配置选项，你可以定义应该抛出错误的HTTP代码。
 
 ```js
 axios.get('/user/12345', {
@@ -564,7 +583,7 @@ axios.get('/user/12345', {
 })
 ```
 
-Using `toJSON` you get an object with more information about the HTTP error.
+使用`toJSON`你可以获取更多关于HTTP错误的信息
 
 ```js
 axios.get('/user/12345')
@@ -573,13 +592,13 @@ axios.get('/user/12345')
   });
 ```
 
-## Cancellation
+## 取消
 
-You can cancel a request using a *cancel token*.
+你可以使用*cancel token*取消一个请求
 
-> The axios cancel token API is based on the withdrawn [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
+> axios的请求token API是基于 [cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
 
-You can create a cancel token using the `CancelToken.source` factory as shown below:
+你可以使用 `CancelToken.source` 工厂类创建一个cancel token,如下所示:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -605,7 +624,7 @@ axios.post('/user/12345', {
 source.cancel('Operation canceled by the user.');
 ```
 
-You can also create a cancel token by passing an executor function to the `CancelToken` constructor:
+你也可以通过向`CancelToken`构造函数传递一个执行方法的方式创建一个cancel token:
 
 ```js
 const CancelToken = axios.CancelToken;
@@ -622,15 +641,15 @@ axios.get('/user/12345', {
 cancel();
 ```
 
-> Note: you can cancel several requests with the same cancel token.
+> 注意: 你可以使用同样的cancel token取消几个请求
 
-## Using application/x-www-form-urlencoded format
+## 使用 application/x-www-form-urlencoded 格式
 
-By default, axios serializes JavaScript objects to `JSON`. To send data in the `application/x-www-form-urlencoded` format instead, you can use one of the following options.
+默认情况下，axios 将JavaScript对象序列成`JSON`.为了能够发送`application/x-www-form-urlencoded` 的数据格式，你可以使用以下的选项.
 
-### Browser
+### 浏览器
 
-In a browser, you can use the [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) API as follows:
+在浏览器中, 你可以使用 [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) 如下的API:
 
 ```js
 const params = new URLSearchParams();
@@ -639,16 +658,16 @@ params.append('param2', 'value2');
 axios.post('/foo', params);
 ```
 
-> Note that `URLSearchParams` is not supported by all browsers (see [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), but there is a [polyfill](https://github.com/WebReflection/url-search-params) available (make sure to polyfill the global environment).
+> 注意到 `URLSearchParams`并不支持所有的浏览器（见[caniuse.com](http://www.caniuse.com/#feat=urlsearchparams) ),但是这里有一个可供使用的 [polyfill](https://github.com/WebReflection/url-search-params) 版本（注意到要确保可以polyfill全局的变量）
 
-Alternatively, you can encode data using the [`qs`](https://github.com/ljharb/qs) library:
+可选的，你可以使用 [`qs`](https://github.com/ljharb/qs) 库来编码数据：
 
 ```js
 const qs = require('qs');
 axios.post('/foo', qs.stringify({ 'bar': 123 }));
 ```
 
-Or in another way (ES6),
+或者使用ES6的方式
 
 ```js
 import qs from 'qs';
@@ -664,35 +683,40 @@ axios(options);
 
 ### Node.js
 
-In node.js, you can use the [`querystring`](https://nodejs.org/api/querystring.html) module as follows:
+ 在node.js中，你可以使用[`querystring`](https://nodejs.org/api/querystring.html)以下的模块:
 
 ```js
 const querystring = require('querystring');
 axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
-You can also use the [`qs`](https://github.com/ljharb/qs) library.
+同样你也可以使用 [`qs`](https://github.com/ljharb/qs) 库.
 
-###### NOTE
-The `qs` library is preferable if you need to stringify nested objects, as the `querystring` method has known issues with that use case (https://github.com/nodejs/node-v0.x-archive/issues/1665).
+###### 注意
+
+如果你想要字符串化嵌套的对象，那么 `qs`库是我们推荐的，当然`querystring`方法同样也有一些用例上的问题 (https://github.com/nodejs/node-v0.x-archive/issues/1665)
 
 ## Semver
 
-Until axios reaches a `1.0` release, breaking changes will be released with a new minor version. For example `0.5.1`, and `0.5.4` will have the same API, but `0.6.0` will have breaking changes.
+直到axios到达`1.0`发布版本，重大的改变将会被发布，同样也会有一些小的版本。例如`0.5.1`和 `0.5.4` 将会有同样的API,但是`0.6.0`将会有重大的改变。
 
 ## Promises
 
 axios depends on a native ES6 Promise implementation to be [supported](http://caniuse.com/promises).
-If your environment doesn't support ES6 Promises, you can [polyfill](https://github.com/jakearchibald/es6-promise).
+If your environment doesn't support ES6 Promises, you can.
+
+axios取决于一个将要被实现的原生ES6 Promise的实现(http://caniuse.com/promises)，如果你的环境不支持ES6的原生Promises,你可以 [polyfill](https://github.com/jakearchibald/es6-promise).
 
 ## TypeScript
-axios includes [TypeScript](http://typescriptlang.org) definitions.
+
+axios 包含了 [TypeScript](http://typescriptlang.org) 定义.
+
 ```typescript
 import axios from 'axios';
 axios.get('/user?ID=12345');
 ```
 
-## Resources
+## 资源
 
 * [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
 * [Upgrade Guide](https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md)
